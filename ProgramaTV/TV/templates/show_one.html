@@ -1,0 +1,41 @@
+{%  extends 'index.html' %}
+    {% block respuesta %}
+
+        <div class="main col-7 p-3 mx-auto justify-content-center">
+                  <h1>TV Show # {{ id }}</h1><hr>
+
+
+        <fieldset disabled>
+              <div class="mb-3">
+                    <label for="titulo" class="form-label">Titulo:</label>
+                    <input type="text" class="form-control" id="titulo" name="t1" aria-describedby="emailHelp" required="required" value="{{ titulo }}">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <label for="titulo" class="form-label">Network:</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" required="required" value="{{ network }}">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label for="cfecha" class="form-label">Release Date: </label>
+                        <input type="text" class="form-control" id="cfecha" value="{{ fecha }}">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="cdescription" class="form-label">Descripción:</label>
+                    <textarea class="form-control" name="d1" id="cdescription" rows="5" >{{ descripcion }}</textarea>
+                </div>
+              <div class="mb-3">
+                    <label for="titulo" class="form-label">Ultima actualización:</label>
+                    <input type="text" class="form-control"  aria-describedby="emailHelp" value="{{ actualizado }}">
+                </div>
+            </fieldset>
+
+     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <a href="/shows/{{ id }}/edit" class="text-start me-2">Edit </a> |
+            <a href="/shows/{{ id }}/destroy" class="text-start ms-2">Delete</a>
+        </div>
+
+</div>
+
+
+    {% endblock %}

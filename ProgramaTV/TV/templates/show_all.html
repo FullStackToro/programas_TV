@@ -1,0 +1,39 @@
+{%  extends 'index.html' %}
+
+ {% block menu %}
+{% endblock %}
+{% block respuesta %}
+ <h1>All Shows</h1><hr>
+
+     <div class="table-responsive col-12 mx-auto mt-5">
+        <table class="table table-hover table-inf">
+            <thead>
+                <tr class="table-dark">
+                  <th scope="col">ID</th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Network</th>
+                    <th scope="col">Estreno</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for libro in libros %}
+                <tr>
+                 {% for key, value in libro.items %}
+                    <td scope="row">{{ value }}</td>
+                    {% endfor %}
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a href="/shows/{{ libro.id }}" class="text-start me-2">Mostrar </a> |
+                            <a href="/shows/{{ libro.id }}/edit" class="text-start me-2 ms-2">Editar</a> |
+                            <a href="/shows/{{ libro.id }}/destroy" class="text-start ms-2">Eliminar</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+<a href="/shows/new" class="text-start">Add a New Show</a>
+{% endblock %}
