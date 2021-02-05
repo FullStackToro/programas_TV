@@ -9,26 +9,34 @@
    {% block respuesta %}
         <div class="main col-7 p-3 mx-auto justify-content-center">
             <h1>Edit Show # {{ id }}</h1><hr>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
 
             <form method="post" action="/shows/{{ id }}/update" id="form1">
             {% csrf_token %}
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="t" value="{{ titulo }}" aria-describedby="emailHelp" required="required" >
+                    <input type="text" class="form-control" id="title" name="titulo_1" value="{{ titulo }}" aria-describedby="emailHelp">
                 </div>
                 <div class="row">
                     <div class="mb-3 col-6">
                         <label for="network" class="form-label">Network</label>
-                        <input type="text" class="form-control" id="network" name="n"  required="required" value="{{ network }}">
+                        <input type="text" class="form-control" id="network" name="net_1" value="{{ network }}">
                     </div>
                     <div class="mb-3 col-6">
                         <label for="fecha" class="form-label">Released Date </label>
-                        <input type="date" class="form-control" id="fecha" name="f"  value="{{ fecha }}" name="fecha" min="1900-01-01" required="required">
+                        <input type="date" class="form-control" id="fecha" name="fecha_1"  value="{{ fecha }}" name="fecha">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                    <textarea class="form-control" name="d" id="exampleFormControlTextarea1" rows="5"> {{ descripcion}}</textarea>
+                    <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="5"> {{ descripcion}}</textarea>
                 </div>
 
             </form>

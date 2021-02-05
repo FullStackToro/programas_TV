@@ -51,25 +51,33 @@
         <div class="main col-7 p-3 mx-auto justify-content-center">
             <h1>ADD a New Show</h1><hr>
 
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
             <form method="POST" action="/shows/create" id="crear_libro">
                  {% csrf_token %}
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="titulo" name="t1" aria-describedby="emailHelp" required="required">
+                    <input type="text" class="form-control" id="titulo" name="titulo_1" aria-describedby="emailHelp">
                 </div>
                 <div class="row">
                     <div class="mb-3 col-6">
                         <label for="cnetwork" class="form-label">Network</label>
-                        <input type="text" class="form-control" id="cnetwork" name="c1" required="required">
+                        <input type="text" class="form-control" id="cnetwork" name="net_1">
                     </div>
                     <div class="mb-3 col-6">
                         <label for="cfecha" class="form-label">Released Date </label>
-                        <input type="date" class="form-control" id="cfecha" name="f1" min="1900-01-01" required="required">
+                        <input type="date" class="form-control" id="cfecha" name="fecha_1">
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="cdescription" class="form-label">Descripción</label>
-                    <textarea class="form-control" name="d1" id="cdescription" rows="5"></textarea>
+                    <textarea class="form-control" name="desc" id="cdescription" rows="5"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary" form="crear_libro">Crear</button>
@@ -80,5 +88,14 @@
     </div>
 </div>
 
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">© 2020–2021 Full Stack Python | Inforcap</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
 </body>
 </html>
